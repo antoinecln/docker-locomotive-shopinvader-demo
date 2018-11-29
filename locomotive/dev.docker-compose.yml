@@ -17,7 +17,10 @@ services:
       - STORE_ASSET_IN_S3=false
       - DRAGON_FLY_SECRET=thisISaDEMOkeyNOTsecret
       - LOCOMOTIVE_ENABLE_REGISTRATION=true
-    build: .
+    build:
+      context: .
+      args:
+        version: $IMAGE_VERSION
     depends_on:
       - db
     volumes:

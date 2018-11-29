@@ -7,7 +7,7 @@ IMAGE=quay.io/akretion/locomotive-shopinvader-demo
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   echo "Log to quay.io"
   docker login quay.io --username="$DOCKER_USERNAME" --password="$DOCKER_PASSWORD"
-  if [ "$TRAVIS_BRANCH" == "v3.4" || "$TRAVIS_BRANCH" == "v4.0"]; then
+  if [ "$TRAVIS_BRANCH" == "v3.4" ]; then
     echo "Publish latest"
     docker tag current-latest $IMAGE:$TRAVIS_BRANCH-latest
     docker push $IMAGE:$TRAVIS_BRANCH-latest

@@ -1,4 +1,5 @@
-FROM quay.io/akretion/locomotive-shopinvader:v3.4.x-20181129
+ARG version
+FROM quay.io/akretion/locomotive-shopinvader:${version}
 
 RUN DEBIAN_FRONTEND=noninteractive \
     && apt-get update \

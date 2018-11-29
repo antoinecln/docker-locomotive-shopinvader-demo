@@ -2,12 +2,16 @@ sudo: required
 
 services: docker
 
+env:
+  matrix:
+    - IMAGE_VERSION=v3.4.x-20181129
+
 before_install:
   - sudo pip install docky
   - ./travis/install
 
 script:
-  - docker build --no-cache -t current-latest demo
+  - docker build --no-cache -t current-latest --build-arg version=$IMAGE_VERSION demo
 
 after_success:
 - ./travis/publish
