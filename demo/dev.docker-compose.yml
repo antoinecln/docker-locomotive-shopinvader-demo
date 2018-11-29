@@ -1,0 +1,21 @@
+networks:
+  default:
+    external:
+      name: dy
+services:
+  db:
+    image: mongo:3
+    volumes:
+      - .db:/data/db
+  locomotive:
+    ports:
+      - 4000:3000
+    environment:
+      - RAILS_ENV=development
+      - STORE_ASSET_IN_S3=false
+      - DRAGON_FLY_SECRET=thisISaDEMOkeyNOTsecret
+      - LOCOMOTIVE_ENABLE_REGISTRATION=true
+    build: .
+    links:
+      - db
+version: '3'

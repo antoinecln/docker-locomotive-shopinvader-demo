@@ -1,0 +1,10 @@
+networks:
+  default:
+    external:
+      name: dy
+services:
+  wagon:
+    image: quay.io/akretion/shopinvader-wagon:v3.4.x-20181115
+    volumes:
+      - ./template:/workspace
+version: '3'

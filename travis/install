@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+echo 'Setup locomotive'
+cd locomotive
+echo 'Launch script to create the default admin user'
+docky run rake demo:setup
+
+echo 'Run locomotive in background'
+docky up
+
+echo 'Setup Wagon'
+cd ../wagon
+
+echo 'Download last template version'
+git clone -b 10.0 https://github.com/akretion/shopinvader-template template
+
+echo 'Deploy site using wagon'
+docky run -- bundle exec wagon deploy test -d -v
+
+echo 'Backup mongo database'
+cd ../locomotive
+docky down
+docky run -- mongodump -h db --db shopinvader -o data
+
+echo 'Move data to demo image'
+mv data/* ../demo/data/

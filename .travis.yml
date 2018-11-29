@@ -1,0 +1,13 @@
+sudo: required
+
+services: docker
+
+before_install:
+  - sudo pip install docky
+  - ./travis/install
+
+script:
+  - docker build --no-cache -t current-latest demo
+
+after_success:
+- ./travis/publish
