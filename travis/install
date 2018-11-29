@@ -25,3 +25,4 @@ docky run -- mongodump -h db --db shopinvader -o data
 
 echo 'Move data to demo image'
 mv data/* ../demo/data/
+mv public/* ../demo/public/
