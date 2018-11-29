@@ -1,5 +1,5 @@
-ARG IMAGE_VERSION
-FROM quay.io/akretion/locomotive-shopinvader:${IMAGE_VERSION}
+ARG version
+FROM quay.io/akretion/locomotive-shopinvader:${version}
 
 RUN DEBIAN_FRONTEND=noninteractive \
     && apt-get update \

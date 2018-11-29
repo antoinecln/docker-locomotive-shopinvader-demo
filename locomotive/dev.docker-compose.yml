@@ -20,7 +20,7 @@ services:
     build:
       context: .
       args:
-        version: $IMAGE_VERSION
+        version: $LOCO_VERSION
     depends_on:
       - db
     volumes:
