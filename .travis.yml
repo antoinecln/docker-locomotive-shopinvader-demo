@@ -4,7 +4,7 @@ services: docker
 
 env:
   matrix:
-    - LOCO_VERSION=v3.4.x-20181130 WAGON_VERSION=v3.4.x-20181115
+    - LOCO_VERSION=v3.4.x-2018113002 WAGON_VERSION=v3.4.x-20181115
 
 before_install:
   - sudo pip install docky
